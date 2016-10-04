@@ -1,6 +1,12 @@
 # MacWarmer
 Monitoring temperature of macbook and calculating PI to keep it warm.
 
+### Screenshots
+
+![](https://github.com/XJBTech/MacWarmer/raw/master/img/1.jpeg)
+![](https://github.com/XJBTech/MacWarmer/raw/master/img/2.jpeg)
+![](https://github.com/XJBTech/MacWarmer/raw/master/img/3.jpeg)
+
 ### Build
 
 ```sh
