@@ -9,9 +9,9 @@
 void * pid_c ( mt_ctrl_t * c )
 {
     PidType * myPID = ( PidType * ) malloc ( sizeof ( PidType ) );
-    PID_init ( myPID, 2, 5, 1, PID_Direction_Direct );
+    PID_init ( myPID, 10, 3, 5, PID_Direction_Direct );
     PID_SetMode ( myPID, PID_Mode_Automatic );
-    PID_SetSampleTime ( myPID, 1000 );
+    PID_SetSampleTime ( myPID, 500 );
     pthread_mutex_lock ( &c->m );
     PID_SetOutputLimits ( myPID, 0, c->procs * 100 );
     pthread_mutex_unlock ( &c->m );

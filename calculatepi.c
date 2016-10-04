@@ -21,7 +21,7 @@ void * control_cpu_usage ( mt_ctrl_t * c )
         int cup = c->cpu_usage_percentage;
         pthread_mutex_unlock ( &c->m );
 
-        int procs = ( ( ( cup + 100 ) / 100 ) - 1 );
+        int procs = ( ( ( cup + 100 ) / 100 ) );
 
         pid_t * pids = ( pid_t * ) malloc ( sizeof ( pid_t ) * procs );
 
@@ -39,19 +39,12 @@ void * control_cpu_usage ( mt_ctrl_t * c )
             {
                 clock_t st_time = clock();
 
-                unsigned long idle_time = ( 100 - cup ) * 10,
-                              busy_time = cup * 10;
+                unsigned long busy_time = i == procs-1 ? cup % 100 : 100,
+                				idle_time = 100 - busy_time;
 
-                if(cup > 100) {
-                	idle_time = 0;
-                	busy_time = 100;
-                }
+                while ( ( clock() - st_time ) * 100 / CLOCKS_PER_SEC < busy_time );
 
-                cup -= 100;
-
-                while ( ( clock() - st_time ) * 1000 / CLOCKS_PER_SEC < busy_time );
-
-                usleep ( idle_time * 1000 );
+                usleep ( idle_time * 10 * 1000 );
                 exit ( EXIT_SUCCESS );
             }
 
