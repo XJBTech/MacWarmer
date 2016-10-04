@@ -28,6 +28,11 @@ void * control_cpu_usage ( mt_ctrl_t * c )
         for ( int i = 0; i < procs; i++ )
         {
 
+            unsigned long busy_time = i == procs - 1 ? cup % 100 : 100,
+                          idle_time = 100 - busy_time;
+
+            // printf("\t%lu", busy_time);
+
             pid_t pid = fork();
 
             if ( pid < 0 )
@@ -38,9 +43,6 @@ void * control_cpu_usage ( mt_ctrl_t * c )
             if ( pid == 0 )
             {
                 clock_t st_time = clock();
-
-                unsigned long busy_time = i == procs-1 ? cup % 100 : 100,
-                				idle_time = 100 - busy_time;
 
                 while ( ( clock() - st_time ) * 100 / CLOCKS_PER_SEC < busy_time );
 
