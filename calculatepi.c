@@ -16,7 +16,6 @@ void * control_cpu_usage ( mt_ctrl_t * c )
     while ( 1 )
     {
     	pthread_mutex_lock(&c->m);
-    	while(c->cpu_usage_percentage == 0) pthread_cond_wait(&c->cv, &c->m);
     	int cup = c->cpu_usage_percentage;
     	pthread_mutex_unlock(&c->m);
 
