@@ -168,9 +168,6 @@ double SMCGetTemperature(char *key)
     return 0.0;
 }
 
-double convertToFahrenheit(double celsius) {
-  return (celsius * (9.0 / 5.0)) + 32.0;
-}
 
 // int main(int argc, char *argv[])
 // {

@@ -6,7 +6,7 @@ OBJS_DIR = .objs
 EXES = warmer
 
 # list object file dependencies for each
-OBJS=$(EXES).o smc.o pid.o monitor.o calculatepi.o
+OBJS=$(EXES).o smc.o pid.o pid_c.o monitor.o calculatepi.o
 
 # set up compiler
 CC = cc
