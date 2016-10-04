@@ -1,6 +1,20 @@
 # MacWarmer
 Monitoring temperature of macbook and calculating PI to keep it warm.
 
+### Build
+
+```sh
+$ make
+```
+
+### Usage
+
+```sh
+$ ./warmer -s [set temp] -p [maximum number of processes]
+```
+
+If don't set number of processes, it will use maximum number of processes automatically.
+
 ### Special thanks to
 
 * [OSX CPU Temp](https://github.com/lavoiesl/osx-cpu-temp)
